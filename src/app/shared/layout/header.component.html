@@ -1,76 +1,45 @@
-<div id="header" class="group margin-bottom header-large" style="top: 0px; display: block;">
-	<div id="header-container" class="header_skin1 container">
+<div style="top: 0px; display: block;">
+	<div style="width: 100%;">
     	<!-- START LOGO -->
-        <div id="logo">
+        <span>
         	<a id="logo-img" href="https://www.partyhulchul.com" title="PartyHulchul">
         		<img src="https://d19vuzhmciufvl.cloudfront.net/hyderabad/wp-content/themes/tyrion/images/partyhulchul-logo.png" data-at2x="https://d19vuzhmciufvl.cloudfront.net/hyderabad/wp-content/themes/tyrion/images/retina/partyhulchul-logo.png" title="PartyHulchul" alt="PartyHulchul">
 			</a>
-		</div>
+		</span>
         <!-- END LOGO -->
 
 	    <!-- START NAVIGATION -->
-	    <div id="nav">
-	    	<div class="menu-responsive group">
-	    		<div class="navigate-text">VIEW NAVIGATION</div>
-	    		<div class="menu-arrow"></div>
-	    			<ul id="menu-new-look-menu" class="level-1 group">
-	    				<li id="menu-item-24920" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children dropdown menu-item-children-3">
-	    					<a style="padding-right: 31px;">	
-	    						Hyderabad
-	    						<span class="sf-sub-indicator"> »</span>
-	    					</a>
-							<div class="submenu group">
-								<ul class="sub-menu group">
-									<li id="menu-item-24921" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-children-0"><a>- Bangalore</a></li>
-									<li id="menu-item-24922" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-children-0"><a>- Chennai</a></li>
-									<li id="menu-item-24923" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-children-0"><a>- Mumbai</a></li>
-								</ul>
-								<span class="dropdown_arrow"></span>
-							</div>
-						</li>
-						<li id="menu-item-24924" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-children-0">
-							<a href="https://www.partyhulchul.com/hyderabad/wedding-engagement-reception-birthday-function-halls/">Venues</a>
-						</li>
-						<li id="menu-item-24946" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children dropdown menu-item-children-7">
-							<a style="padding-right: 31px;">
-								Party Services
-								<span class="sf-sub-indicator"> »</span>
-							</a>
-							<div class="submenu group">
-								<ul class="sub-menu group">
-									<li id="menu-item-24957" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-children-0">
-										<a href="https://www.partyhulchul.com/hyderabad/photographers/">- Photo &amp; Video</a>
-									</li>
-									<li id="menu-item-24954" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-children-0">
-										<a href="https://www.partyhulchul.com/hyderabad/caterers/">- Catering</a>
-									</li>
-									<li id="menu-item-24952" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-children-0">
-										<a href="https://www.partyhulchul.com/hyderabad/party-decorators/">- Decorator</a>
-									</li>
-									<li id="menu-item-26083" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-children-0">
-										<a href="https://www.partyhulchul.com/hyderabad/bridal-makeup/">- Beauty &amp; Health</a>
-									</li>
-									<li id="menu-item-26084" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-children-0">
-										<a href="https://www.partyhulchul.com/hyderabad/party-entertainment/">- Entertainment</a>
-									</li>
-									<li id="menu-item-26131" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-children-0">
-										<a href="https://www.partyhulchul.com/hyderabad/event-planners/">- Event Planning</a>
-									</li>
-									<li id="menu-item-24953" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-children-0">
-										<a href="https://www.partyhulchul.com/hyderabad/party-transportation/">- Transport</a>
-									</li>
-								</ul>
-								<span class="dropdown_arrow"></span>
-							</div>
-					</li>
-					<li id="menu-item-24973" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-children-0">
-						<a href="https://" class="contact-popup">Get In Touch</a>
-					</li>
-				</ul>
-			</div>
-		</div>
+	    <span>
+			<span>
+				<select (change)="navigateTo($event.target.value)">
+					<option value="">Hyderabad</option>
+					<option value="">Bangalore</option>
+					<option value="">Chennai</option>
+					<option value="">Mumbai</option>
+				</select>
+			</span>
+			<span>
+				<a routerLink="/venues">Venues</a>
+			</span>
+			<span>
+				<select (change)="navigateTo($event.target.value)">
+					<option value="/photography">Photo &amp; Video</option>
+					<option value="/catering">Catering</option>
+					<option value="/decorators">Decorator</option>
+					<option value="/beauty">Beauty &amp; Health</option>
+					<option value="">Entertainment</option>
+					<option value="">Event Planning</option>
+					<option value="">Transport</option>
+  				</select>
+				
+			</span>
+			<span>
+				<a routerLink="" class="contact-popup">Get In Touch</a>
+			</span>
+		</span>
 	    <!-- END NAVIGATION -->
     
 	</div>
-	<link rel="stylesheet" type="text/css" href="//www.partyhulchul.com/hyderabad/wp-content/themes/tyrion/css/style.css">            
+	<link rel="stylesheet" type="text/css" href="//www.partyhulchul.com/hyderabad/wp-content/themes/tyrion/css/style.css">
 </div>
+<br/>
