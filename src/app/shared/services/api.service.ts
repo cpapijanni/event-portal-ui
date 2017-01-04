@@ -17,31 +17,36 @@ export class ApiService {
     };
     return new Headers(headersConfig);
   }
+  
+  private getEndPointURL(path: string){
+  	let endPointURL: string = environment.apiBaseUrl + path;
+  	return endPointURL;
+  }
 
   private formatErrors(error: any) {
      return Observable.throw(error.json());
   }
 
   get(path: string, params: URLSearchParams = new URLSearchParams()): Observable<any> {
-    return this.http.get(`${environment.apiBaseUrl}${path}`, { headers: this.setHeaders(), search: params })
+    return this.http.get(this.getEndPointURL(path), { headers: this.setHeaders(), search: params })
     	.catch(this.formatErrors)
     	.map((res:Response) => res.json());
   }
 
   put(path: string, body: Object = {}): Observable<any> {
-    return this.http.put(`${environment.apiBaseUrl}${path}`, JSON.stringify(body), { headers: this.setHeaders() } )
+    return this.http.put(this.getEndPointURL(path), JSON.stringify(body), { headers: this.setHeaders() } )
     	.catch(this.formatErrors)
     	.map((res:Response) => res.json());
   }
 
   post(path: string, body: Object = {}): Observable<any> {
-    return this.http.post(`${environment.apiBaseUrl}${path}`, JSON.stringify(body), { headers: this.setHeaders() })
+    return this.http.post(this.getEndPointURL(path), JSON.stringify(body), { headers: this.setHeaders() })
     	.catch(this.formatErrors)
     	.map((res:Response) => res.json());
   }
 
   delete(path): Observable<any> {
-    return this.http.delete(`${environment.apiBaseUrl}${path}`, { headers: this.setHeaders() })
+    return this.http.delete(this.getEndPointURL(path), { headers: this.setHeaders() })
     	.catch(this.formatErrors)
     	.map((res:Response) => res.json());
   }

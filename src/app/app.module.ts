@@ -15,7 +15,7 @@ import { VenuesModule } from './venues/venues.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent, FooterComponent, SharedModule } from './shared';
 
-import { ApiService } from './shared';
+import { ApiService, LocationService, VenueService } from './shared';
 
 const rootRouting: ModuleWithProviders = RouterModule.forRoot([], { useHash: true });
 
@@ -38,7 +38,7 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([], { useHash: tru
     PhotographyModule,
     VenuesModule
   ],
-  providers: [ApiService],
+  providers: [ApiService, LocationService, VenueService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

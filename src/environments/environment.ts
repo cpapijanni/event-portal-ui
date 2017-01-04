@@ -7,5 +7,5 @@ let production = false;
 
 export const environment = {
   production: production,
-  apiBaseUrl: 'http://localhost:8080/event-portal'
+  apiBaseUrl: 'http://localhost:8080'
 };
