@@ -1,4 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
   apiBaseUrl: 'http://eventportalapi-cpapijanni.rhcloud.com/event-portal'
 };
