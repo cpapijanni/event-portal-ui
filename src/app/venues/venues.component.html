@@ -55,23 +55,21 @@
 			
 		</div>
 		<div style="width: 70%;float: right;">
-			<table>
-				<tr *ngFor="let venueDetails of venueDetails">
-					<td>
-						<div class="thumb-wrapper">
-							<a routerLink="""></a>
+			<div style="width: 100%;">
+				<div *ngFor="let venue of venueDetails; let tagIndex = index">
+					<div style="width: 33%;float: left;">
+						<span class="thumb-wrapper">
+							<a routerLink="">
 								<span class="face">
 									<img width="262" height="262" src="https://d19vuzhmciufvl.cloudfront.net/hyderabad/wp-content/uploads/2015/05/Hotel-Nera-Regency-262x262.jpg" class="attachment-shop_catalog size-shop_catalog wp-post-image" alt="Hotel-Nera-Regency"/>
 								</span>
-								<span class="face back">
-									<img src="https://d19vuzhmciufvl.cloudfront.net/hyderabad/wp-content/uploads/2015/05/neraregency001-262x262.jpg" alt="Hotel Nera Regency" title="Hotel Nera Regency" class="image-hover yit-image attachment-shop_catalog" width="262" height="262" style="display: block; opacity: 0;"/>
-								</span>
 							</a>
-						</div>
-						<h3></h3>
-					</td>
-				</tr>
-			</table>
+						</span>
+						<h3>{{venueDetails[tagIndex].name}}</h3>
+						<span>{{venueDetails[tagIndex].address.addressLine1}}, Upto {{venueDetails[tagIndex].seatingCapacity}} capacity</span>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
