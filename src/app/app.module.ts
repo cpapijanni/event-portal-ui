@@ -11,6 +11,7 @@ import { CateringModule } from './catering/catering.module';
 import { DecoratorsModule } from './decorators/decorators.module';
 import { PhotographyModule } from './photography/photography.module';
 import { VenuesModule } from './venues/venues.module';
+import { QuoteRequestModule } from './quote-request/quote-request.module';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent, FooterComponent, SharedModule } from './shared';
@@ -36,7 +37,8 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([], { useHash: tru
     CateringModule,
     DecoratorsModule,
     PhotographyModule,
-    VenuesModule
+    VenuesModule,
+    QuoteRequestModule
   ],
   providers: [ApiService, LocationService, VenueService],
   bootstrap: [AppComponent]
