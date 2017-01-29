@@ -1,25 +1,32 @@
-<div>
+<div style="margin-left: 5%;">
 	<div class="slogan container">
         <div class="slogan_container">
 			<h2 class="slogan">
-				Post your <span style="color: #9f0808;">Request</span>
+				Post your <span style="color: #9f0808;font-size: 36px;font-weight: bold">Request</span>
 			</h2>
 		</div>
     </div>
+	<div class="box success-box" style="margin-top: 20px;" *ngIf="showSuccessMsg">Thanks for your request and we will contact you soon.</div>
 	<div>
 		<h4 class="question-title">Please choose your event type&nbsp;</h4>
-			<ul class="event-bar" style="margin-left: 0;">
-					<li *ngFor = "let eventType of quoteDetails.eventTypeList; let i = index;" value="{{eventType.value}}">
+		<ul class="event-bar" style="margin-left: 0;">
+				<li *ngFor = "let eventType of quoteDetails.eventTypeList; let i = index;" 
+					value="{{eventType.value}}" 
+					(click)="setEventType(eventType.value)" 
+					[ngClass]="{active: eventType.value==quoteRequestModel.eventType}">
 						<img class="event-type" alt="{{eventType.imageName}}" src="{{imagesBaseURL + eventType.imageName}}"/>
 						<span>{{eventType.displayName}}</span>
-					</li>
-			</ul>
-		</div>
+				</li>
+		</ul>
+	</div>
 		<div>
 			<h4>What is your total budget?</h4>
 			<ul class="circle-list" style="margin-left: 0;">
-				<li *ngFor = "let budget of quoteDetails.budgetRange; let i = index;" value="{{budget.value}}">
-					<span>{{budget.displayName}}</span>
+				<li *ngFor = "let budget of quoteDetails.budgetRange; let i = index;" 
+					value="{{budget.value}}" 
+					(click)="setBudget(budget.value)" 
+					[ngClass]="{active: budget.value==quoteRequestModel.totalBudget}">
+						<span>{{budget.displayName}}</span>
 				</li>
 				<li>
 					<span>
@@ -30,28 +37,44 @@
 			
 		</div>
 		<div>
-			<h4 class="question-title">Choose the services you need</h4>
-			<ul class="circle-list" style="margin-left: 0;">
-				<li class="services" *ngFor = "let service of quoteDetails.servicesList; let i = index;" value="{{service.value}}">
-					<img alt="{{service.imageName}}" src="{{imagesBaseURL + service.imageName}}"/>
-					<span>{{service.displayName}}</span>
+			<h4 class = "question-title">Choose the services you need</h4>
+			<ul class = "circle-list" style = "margin-left: 0;">
+				<li class="entertainment-item" 
+					*ngFor = "let service of quoteDetails.servicesList; let i = index;" 
+					value = "{{service.value}}" 
+					(click) = "setServices(service.value)" 
+					[ngClass] = "{active: quoteRequestModel.services.indexOf(service.value) !== -1 }">
+						<img alt = "{{service.imageName}}" src = "{{imagesBaseURL + service.imageName}}"/>
+						<span>{{service.displayName}}</span>
 				</li>
 			</ul>
 		</div>
 		<div>
-			<h4 class="question-title">Entertainment</h4>
-			<ul class="circle-list" style="margin-left: 0;">
-				<li class="entertainment-item" *ngFor = "let entertainmentItem of quoteDetails.entertainmentItemsList; let i = index;" value="{{entertainmentItem.value}}">
-					<img alt="{{entertainmentItem.imageName}}" src="{{imagesBaseURL + entertainmentItem.imageName}}"/>
-					<span>{{entertainmentItem.displayName}}</span>
+			<h4 class = "question-title">Entertainment</h4>
+			<ul class = "circle-list" style = "margin-left: 0;">
+				<li class = "entertainment-item" 
+					*ngFor = "let entertainmentItem of quoteDetails.entertainmentItemsList; let i = index;" 
+					value = "{{entertainmentItem.value}}" 
+					(click) = "setEntertainmentItems(entertainmentItem.value)" 
+					[ngClass] = "{active: quoteRequestModel.entertainment.indexOf(entertainmentItem.value) !== -1 }">
+						<img alt = "{{entertainmentItem.imageName}}" src = "{{imagesBaseURL + entertainmentItem.imageName}}"/>
+						<span>{{entertainmentItem.displayName}}</span>
 				</li>
 			</ul>
 		</div>
 		<div>
-			<h4 class="question-title">Do you need Event Planner?&nbsp;</h4>
-			<ul class="circle-list" style="margin-left: 0;">
-				<li class="event-planner-item" value="eventpallner-yes"><span>Yes</span>&nbsp;</li>
-				<li class="event-planner-item" value="eventpallner-no"><span>No</span>&nbsp;</li>
+			<h4 class = "question-title">Do you need Event Planner?&nbsp;</h4>
+			<ul class = "circle-list" style = "margin-left: 0;">
+				<li class = "event-planner-item" 
+					(click) = "isEventPlannerNeeded('Yes')" 
+					[ngClass] = "{active: 'Yes' === quoteRequestModel.isEventPlannerNeeded}">
+						<span>Yes</span>&nbsp;
+				</li>
+				<li class = "event-planner-item" 
+					(click) = "isEventPlannerNeeded('No')" 
+					[ngClass] = "{active: 'No' === quoteRequestModel.isEventPlannerNeeded}">
+						<span>No</span>&nbsp;
+				</li>
 			</ul>
 		</div>
 		
@@ -66,7 +89,7 @@
 								<label for="city">Please choose your City&nbsp;<small class="mandatory-star">*</small></label>
 							</td>
 							<td valign="top">
-								<select style="width: 95%;">
+								<select style="width: 95%;height: 36px;" (click)="setCity(event.target.value)">
 									<option value="">Select City</option>
 									<option value="hyderabad">Hyderabad</option>
 									<option value="goa">Goa</option>
@@ -80,7 +103,7 @@
 								<label for="location">Any preferred Location</label>
 							</td>
 							<td valign="top">
-								<input type="text" name="location" id="location" maxlength="50" placeholder="Enter your Location" size="30">
+								<input type="text" name="location" id="location" maxlength="50" placeholder="Enter your Location" size="30" [(ngModel)]="quoteRequestModel.location">
 							</td>
 						</tr>
 						<tr>
@@ -88,7 +111,7 @@
 								<label for="email">What is your event date&nbsp;<small class="mandatory-star">*</small></label>
 							</td>
 							<td valign="top">
-								<input type="text" name="event_date" id="datepicker" class="datepicker hasDatepicker">
+								<input type="text" name="event_date" id="datepicker" class="datepicker hasDatepicker" [(ngModel)]="quoteRequestModel.date">
 							</td>
  
 						</tr>
@@ -97,7 +120,15 @@
 								<label for="telephone">What the expected Guest Count</label>
 							</td>
 							<td valign="top">
-								<input type="number" name="guest_count" id="guest" placeholder="Guest Count" maxlength="30" size="30">
+								<input type="number" name="guest_count" id="guest" placeholder="Guest Count" maxlength="30" size="30" [(ngModel)]="quoteRequestModel.expectedGuestCount">
+							</td>
+						</tr>
+						<tr>
+							<td valign="top">
+								<label for="comments">&nbsp;</label>
+							</td>
+							<td valign="top">
+								<br>&nbsp;
 							</td>
 						</tr>
 						<tr>
@@ -120,7 +151,7 @@
 							<label for="email">Name&nbsp;<small class="mandatory-star">*</small></label>
 						</td>
 						<td valign="top">
-							<input type="text" maxlength="50" placeholder="Enter your full name" size="30">
+							<input type="text" maxlength="50" placeholder="Enter your full name" size="30" [(ngModel)]="quoteRequestModel.name">
 						</td>
 					</tr>
 					<tr>
@@ -128,7 +159,7 @@
 							<label for="city">Email&nbsp;<small class="mandatory-star">*</small></label>
 						</td>
 						<td valign="top">
-							<input type="text" name="email" id="email" maxlength="50" placeholder="name@domain.com" size="30">
+							<input type="text" name="email" id="email" maxlength="50" placeholder="name@domain.com" size="30" [(ngModel)]="quoteRequestModel.email">
 						</td>
 					</tr>
 					<tr>
@@ -136,7 +167,7 @@
 							<label for="comments">Contact Number&nbsp;<small class="mandatory-star">*</small></label>
 						</td>
 						<td valign="top">
-							<input type="text" maxlength="10" placeholder="Enter your phone number" size="10">
+							<input type="text" maxlength="10" placeholder="Enter your phone number" size="10" [(ngModel)]="quoteRequestModel.contactNumber">
 						</td>
 					</tr>
 				</tbody>
@@ -146,8 +177,8 @@
 	</div>
 	<div style="text-align:center; margin-bottom:10px;">
 		<p>
-			<label><input type="checkbox" value="agree">I agree to the Terms and Conditions</label>
+			<label><input type="checkbox" value="agree" checked="checked" readonly="readonly">I agree to the Terms and Conditions</label>
 		</p>
-		<button type="submit" class="red-button" name="submit" value="SUBMIT" style="color: #ffffff;background-color:#8d0202;border-color:#9f2424;">SUBMIT</button>
+		<button type="submit" name="submit" value="SUBMIT" style="color: #ffffff;background-color:#8d0202;border-color:#9f2424;padding-top: 8px;padding-bottom: 8px;padding-left: 20px;padding-right: 20px;" (click)="submitQuoteRequest()">SUBMIT</button>
 	</div>
 </div>

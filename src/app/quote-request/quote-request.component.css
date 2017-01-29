@@ -25,7 +25,7 @@ div.slogan {
 	margin-bottom: 0px;
 	margin-top: 0;
 	letter-spacing: -0.9px;
-	postion: relative;
+	position: relative;
 	font-weight: 800;
 }
 
@@ -294,4 +294,37 @@ td {
 	.table-width {
 		width: 300px;
 	}
+}
+img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    vertical-align: middle;
+    border: 0;
+    -ms-interpolation-mode: bicubic;
+}
+div.success-box {
+	background: #fbfff0 url("https://partyhulchul.com/wp-content/themes/tyrion/theme/assets/images/icons/message/check.png") no-repeat scroll 18px center ;
+	border: 6px solid #e2efbb;
+	color: #677932;
+}
+span {
+	font-size: 14px;
+	font-family: 'Lato',sans-serif;
+	font-style: normal;
+	font-weight: 400;
+	color: #4b4b4b;
+}
+h4 { 
+	font-size: 18px; 
+	font-family: 'Lato', sans-serif; 
+	color: #4b4b4b; 
+	font-style: normal; 
+	font-weight: 700; 
+}
+input[type="number"], input[type="text"] {
+	padding: 6px; 
+	border-radius: 0px; 
+	height: 20px;
+	width: 90%;
 }

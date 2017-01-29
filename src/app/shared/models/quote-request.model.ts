@@ -3,7 +3,7 @@ export class QuoteRequestModel{
 	totalBudget: string;
 	services: string[];
 	entertainment: string[];
-	isEventPlannerNeeded: boolean;
+	isEventPlannerNeeded: string;
 	city: string;
 	location: string;
 	date: string;
